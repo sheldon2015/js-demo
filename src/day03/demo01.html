@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+
+    <style>
+        * {
+            margin: 0;
+        }
+        
+        .wrap div {
+            height: 50px;
+            background: green;
+            margin-bottom: 10px;
+            width: 100px;
+        }
+        
+        .hint {
+            position: fixed;
+            top: 0;
+            right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class='wrap'>
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>3</div>
+        <div>3</div>
+        <div>3</div>
+        <div>3</div>
+        <div>3</div>
+        <div>3</div>
+        <div>3</div>
+        <div>3</div>
+        <div>3</div>
+        <div>3</div>
+        <div>3</div>
+        <div>3</div>
+        <div>3</div>
+        <div>3</div>
+        <div>3</div>
+        <div>3</div>
+        <div>3</div>
+        <div>3</div>
+        <div>3</div>
+        <div>3</div>
+        <div>3</div>
+        <div>3</div>
+        <div>3</div>
+        <div>3</div>
+        <div>3</div>
+        <div>3</div>
+        <div>3</div>
+        <div>3</div>
+        <div>3</div>
+        <div>3</div>
+        <div>3</div>
+        <div>3</div>
+        <div>3</div>
+        <div>3</div>
+        <div>3</div>
+    </div>
+
+    <div class='hint'>
+
+        <div class="clientx">0</div>
+        <div class="clienty">0</div>
+    </div>
+
+    <div>
+
+        <button id='event'>event</button>
+    </div>
+
+
+    <script>
+        window.onload = function() {
+            var wrap = document.querySelector(".wrap");
+            var clientx = document.querySelector(".clientx");
+            var clienty = document.querySelector(".clienty");
+
+            wrap.addEventListener('touchstart', function(e) {
+                clientx.textContent = e.touches[0].clientX;
+                clienty.textContent = e.touches[0].clientY;
+                console.log('touchstart');
+            }, false);
+
+            wrap.addEventListener('touchmove', function(e) {
+                clientx.textContent = e.touches[0].clientX;
+                clienty.textContent = e.touches[0].clientY;
+                // 阻止滚动
+                e.preventDefault();
+                console.log('touchmove')
+
+            }, false);
+
+            wrap.addEventListener('touchend', function(e) {
+                clientx.textContent = e.changedTouches[0].clientX;
+                clienty.textContent = e.changedTouches[0].clientY;
+                console.log('touchend')
+
+            }, false);
+
+            wrap.addEventListener('click', function(e) {
+                console.log('click')
+
+            }, false);
+
+
+
+
+            //自定义事件
+            var event;
+            var eventBtn = document.querySelector("#event");
+
+            eventBtn.addEventListener('myevent', function(e) {
+                console.log('myevent');
+
+            }, false);
+
+            event = document.createEvent('CustomEvent');
+
+            event.initCustomEvent('myevent', true, false, 'hello world');
+
+            eventBtn.addEventListener('click', function(e) {
+
+                eventBtn.dispatchEvent(event);
+
+
+            }, false);
+
+        }
+    </script>
+
+
+
+</body>
+
+</html>

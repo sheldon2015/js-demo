@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>理解promise的基本使用</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+</head>
+
+<body>
+
+
+
+
+    <script>
+        var promise=     new   Promise(   (resolve,reject)=>{
+
+            setTimeout(()=>{
+                   resolve('数据1');
+                   console.log('数据test');
+            },1000);
+
+        })
+
+        promise.then(function(re){
+            re='数据2';
+
+
+            console.log(re);
+            return  re;
+               }).then(function(re){
+                   console.log(re+'111111111111');
+
+               })
+
+          console.log('数据3');
+    </script>
+
+
+</body>
+
+</html>

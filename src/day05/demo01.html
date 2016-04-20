@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>理解promise的基本使用</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+</head>
+
+<body>
+
+
+
+
+    <script>
+        var Promise = function() {
+         this.callbacks = [];
+}
+
+Promise.prototype = {
+    constructor: Promise,
+    resolve: function(result) {
+        this.complete("resolve", result);
+    },
+
+    reject: function(result) {
+        this.complete("reject", result);
+    },
+
+    complete: function(type, result) {
+        while (this.callbacks[0]) {
+            this.callbacks.shift()[type](result);
+        }
+    },
+
+    then: function(successHandler, failedHandler) {
+        this.callbacks.push({
+            resolve: successHandler,
+            reject: failedHandler
+        });
+
+        //函数会返回一个promise，可以链式调用
+
+        return this;
+    }
+}
+
+// test
+var promise = new Promise();
+
+var delay1 = function() {
+
+    /**
+     *这种自定义的实现方式，在去掉异步时（setTimeout）会有问题
+     *
+     *
+    */
+
+
+
+
+    setTimeout(function() {
+
+        // 在异步的回调函数中，根据异步任务的结果将参数传给then中的回调函数
+
+        promise.resolve('数据1');
+
+
+    }, 1000);
+
+
+
+    return promise;
+
+
+
+};
+
+var callback1 = function(re) {
+
+    re = re + '数据2';
+    console.log(re);
+};
+
+delay1().then(callback1)
+    </script>
+
+
+</body>
+
+</html>

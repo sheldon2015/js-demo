@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>histoy api 02</title>
+    <style>
+        p {
+            font-size: 20px;
+        }
+        
+        p:target {
+            color: yellow;
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <p id='DEMO1'>DEMO demo01</p>
+    <p id='DEMO2'>DEMO demo02</p>
+    <p id='DEMO3'>DEMO demo03</p>
+    <a href="javascript:void(0)">#demo01</a>
+    <a href="javascript:void(0)">#demo02</a>
+    <a href="javascript:void(0)">#demo03</a>
+    <!--
+       切换前进后退都会触发popstate事件
+
+    -->
+
+
+
+</body>
+<script>
+    var   a_array=document.querySelectorAll('a');
+
+    for(var i=0;i<a_array.length;i++){
+
+       a_array[i].addEventListener('click',
+
+        function(){
+
+          history.pushState({demo:this.textContent}, this.textContent, this.textContent);
+
+
+        },false);
+
+    }
+
+    var   hash;
+
+    window.addEventListener("popstate", function(e) {
+
+            alert(1111111);
+            alert(history.length);
+    });
+
+</script>
+
+</html>
