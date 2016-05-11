@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>数组的几个常用方法</title>
+</head>
+
+<body>
+
+    <script>
+        var      arr1=['a','b','c','d','e'];
+
+        console.log(arr1.pop());//删除末尾的元素e
+        console.log(arr1);//'a','b','c','d'
+
+        var      arr2=['a','b','c','d','e'];
+        console.log(arr2.shift());//删除第一个元素a
+        console.log(arr2);//'b','c','d','e'
+
+         var      arr3=['a','b','c','d','e'];
+        console.log(arr3.slice(2));// 选取元素 c,d,e
+        console.log(arr3);//'a','b','c','d','e'
+
+         var      arr4=['a','b','c','d','e'];
+        console.log(arr4.splice(2,0,'f','g'));//添加元素，返回删除的元素数组 []
+        console.log(arr4);//'a','b','f','g','c','d','e'
+
+         var      arr5=['a','b','c','d','e'];
+        console.log(arr5.splice(2,1,'f','g'));//添加元素，返回删除的元素数组 [c]
+        console.log(arr5);//'a','b','f','g','d','e'
+
+
+         var      arr6=['a','b','c','d','e'];
+        console.log(arr6.unshift('f','g'));//在数组开始添加元素，返回最终的数组长度   7
+        console.log(arr6);//'a','b','f','g','d','e'
+
+
+
+        var      a1=[{a:1},{b:2},{c:3}];
+        var      a2=[{a:1},{b:2},{c:3}];
+        var      a3=[{a:1},{b:2},{c:3}];
+
+        var      a4=a1.concat(a2,a3);//拼接对象
+        console.log(a4);
+    </script>
+
+
+
+</body>
+
+</html>

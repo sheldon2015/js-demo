@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>aniimation step</title>
+
+    <style>
+        @keyframes loader {
+            to {
+                background-position: -800px 0;
+            }
+        }
+        .loader {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-indent: 999px;
+            overflow: hidden;
+            background: url(./loader.png) 0 0;
+            animation: loader 1s infinite linear;
+        }
+
+        .loader1 {
+            top: 20%;
+            /* 是否有no-repeat*/
+            background: url(./loader.png) 0 0 no-repeat;
+            animation: loader 1s infinite linear;
+        }
+        /*  举例子
+        @-webkit-keyframes circle {
+                    0% {background: red}
+                    50%{background: yellow}
+                    100% {background: blue}
+        }
+        step-start在变化过程中，都是以下一帧的显示效果来填充间隔动画，所以0% 到 50%  直接就显示了黄色yellow
+
+        step-end与上面相反，都是以上一帧的显示效果来填充间隔动画，所以0% 到 50% 直接就显示了红色red
+        */
+        .loader2 {
+            top: 30%;
+            background: url(./loader.png) 0 0;
+            animation: loader 2s infinite steps(8, end);
+        }
+        .loader3 {
+            top: 40%;
+            background: url(./loader.png) 0 0;
+            animation: loader 2s infinite steps(8, start);
+        }
+    </style>
+</head>
+<body>
+    <div class="loader loader">Loading...</div>
+    <div class="loader loader1">Loading...</div>
+    <div class="loader loader2">Loading...</div>
+    <div class="loader loader3">Loading...</div>
+</body>
+</html>

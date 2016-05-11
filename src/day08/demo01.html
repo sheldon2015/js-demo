@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ajax</title>
+    <script src='./demo01.js'></script>
+    <style>
+        .progress {
+            width: 200px;
+            height: 20px;
+            background: red;
+        }
+
+        .progress-inner {
+            width: 0;
+            height: 100%;
+            background: green;
+            transition: width 2s;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button id='load' onclick='loadByAjax()'>click</button>
+    <div class='progress'>
+        <div class='progress-inner'></div>
+    </div>
+
+</body>
+
+</html>

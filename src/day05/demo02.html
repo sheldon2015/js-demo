@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>理解promise的基本使用</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+
 </head>
 
 <body>
@@ -23,12 +24,15 @@
         })
 
         promise.then(function(re){
-            re='数据2';
 
+                setTimeout(()=>{
+                    re='数据2';
+                    console.log(re);
+                });
 
-            console.log(re);
-            return  re;
-               }).then(function(re){
+                    return  re;
+                })
+               .then(function(re){
                    console.log(re+'111111111111');
 
                })

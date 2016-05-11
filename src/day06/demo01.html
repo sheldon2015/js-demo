@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+//利用iframe跨域 //主域相同子域不同； //主域不同
+
+<body>
+    <div>
+        sssssssssssssssssssssssss
+    </div>
+    <iframe id='iframe' src="http://cn.vuejs.org/" frameborder="0"></iframe>
+    <script>
+        var    s= document.querySelector('#iframe');
+           //获取iframe中的window对象
+           alert(s.contentWindow);
+
+
+         //获取iframe的父亲的window对象
+          alert(s.contentWindow.parent);
+    </script>
+
+</body>
+
+</html>

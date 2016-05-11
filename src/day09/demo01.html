@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>file reader api</title>
+    <style>
+        .progress {
+            width: 200px;
+            height: 40px;
+            background: white;
+        }
+        
+        .progress-inner {
+            background: green;
+            height: 100%;
+            width: 0;
+            transition: width .5s;
+        }
+    </style>
+
+
+
+</head>
+
+<body>
+    <div>上传文件input[file]</div>
+    <input multiple="multiple" id='file' type="file">
+    <div> 上传的文件: </div>
+    <div>进度：</div>
+    <div class='progress'>
+        <div class='progress-inner'></div>
+    </div>
+    <div id='destination'></div>
+    <script src='./demo01.js'></script>
+
+</body>
+
+</html>
