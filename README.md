@@ -25,6 +25,9 @@
         4. DeviceOrientationEvent   DeviceMotionEvent
 * day13
         1. animation-timing-function  函数除了常规的bezel曲线，还可以是step函数，去掉关键帧之间的过渡，参考  [ by Aaron ](http://www.cnblogs.com/aaronjs/p/4642015.html)
+*  day14
+        1. slice()   转换具有length的数据结构为数组
+        2. margin 副边距，圣杯布局和双飞翼布局
 
 
 
