@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>getBoundingClientRect和getClientRects的区别</title>
+    <style>
+        * {
+            margin: 0;
+        }
+        
+        .block {
+            width: 300px;
+            height: 300px;
+            background: red;
+            word-wrap: break-word
+        }
+    </style>
+</head>
+
+<body>
+    <div class='block'>
+        <span class='inline'>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa hello world hello world</span>
+    </div>
+    <script>
+        window.onload = function() {
+            var el = document.querySelector('.block');
+            //obj1获取的是TextRectangle列表,obj2返回1个对象
+            var obj1 = el.getClientRects();
+            var obj2 = el.getBoundingClientRect();
+            console.log(obj1)
+            console.log(obj2)
+            var el = document.querySelector('.inline');
+            //obj1获取的是TextRectangle列表，返回了6个对象,obj2返回1个对象
+            var obj1 = el.getClientRects();
+            var obj2 = el.getBoundingClientRect();
+            console.log(obj1)
+            console.log(obj2)
+        }
+    </script>
+</body>
+
+</html>

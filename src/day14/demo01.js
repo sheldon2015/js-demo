@@ -8,7 +8,7 @@ console.log(demo);
 [].slice.call(demo).forEach(function (el) {
     console.log(el)
 
-}, this);;
+}, this);
 demo.forEach(function (el) {
     console.log(el)
 

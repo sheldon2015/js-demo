@@ -5,13 +5,31 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    <!--
+    事件的三个阶段
+    1.捕获阶段
+    2.目标阶段
+    3.冒泡阶段
+    -->
 
     <style>
         * {
             margin: 0;
         }
         
-        .wrap div {
+        html,
+        body {
+            height: 100%
+        }
+        
+        .wrap {
+            margin-top: 30px;
+            border: 1px solid red;
+            height: 400px;
+            overflow: scroll;
+        }
+        
+        .wrap .list div {
             height: 50px;
             background: green;
             margin-bottom: 10px;
@@ -27,121 +45,125 @@
 </head>
 
 <body>
-
     <div class='wrap'>
-        <div>1</div>
-        <div>2</div>
-        <div>3</div>
-        <div>3</div>
-        <div>3</div>
-        <div>3</div>
-        <div>3</div>
-        <div>3</div>
-        <div>3</div>
-        <div>3</div>
-        <div>3</div>
-        <div>3</div>
-        <div>3</div>
-        <div>3</div>
-        <div>3</div>
-        <div>3</div>
-        <div>3</div>
-        <div>3</div>
-        <div>3</div>
-        <div>3</div>
-        <div>3</div>
-        <div>3</div>
-        <div>3</div>
-        <div>3</div>
-        <div>3</div>
-        <div>3</div>
-        <div>3</div>
-        <div>3</div>
-        <div>3</div>
-        <div>3</div>
-        <div>3</div>
-        <div>3</div>
-        <div>3</div>
-        <div>3</div>
-        <div>3</div>
-        <div>3</div>
-        <div>3</div>
-        <div>3</div>
+        <div class='list'>
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>3</div>
+            <div>3</div>
+            <div>3</div>
+            <div>3</div>
+            <div>3</div>
+            <div>3</div>
+            <div>3</div>
+            <div>3</div>
+            <div>3</div>
+            <div>3</div>
+            <div>3</div>
+            <div>3</div>
+            <div>3</div>
+            <div>3</div>
+            <div>3</div>
+            <div>3</div>
+            <div>3</div>
+            <div>3</div>
+            <div>3</div>
+            <div>3</div>
+            <div>3</div>
+            <div>3</div>
+            <div>3</div>
+            <div>3</div>
+            <div>3</div>
+            <div>3</div>
+            <div>3</div>
+            <div>3</div>
+            <div>3</div>
+            <div>3</div>
+            <div>3</div>
+            <div>3</div>
+            <div>3</div>
+            <div>3</div>
+            <div>3</div>
+        </div>
     </div>
 
     <div class='hint'>
-
         <div class="clientx">0</div>
         <div class="clienty">0</div>
+        <div class="documentx">0</div>
+        <div class="documenty">0</div>
     </div>
-
     <div>
-
         <button id='event'>event</button>
     </div>
-
-
     <script>
         window.onload = function() {
-            var wrap = document.querySelector(".wrap");
+
+            var wrap = document.querySelector(".list");
             var clientx = document.querySelector(".clientx");
             var clienty = document.querySelector(".clienty");
+            var documentx = document.querySelector(".documentx");
+            var documenty = document.querySelector(".documenty");
+            var html = document.querySelector("html");
+            html.addEventListener('touchstart', function(e) {
+                e.preventDefault();
+                console.log('html')
+            }, false);
 
             wrap.addEventListener('touchstart', function(e) {
                 clientx.textContent = e.touches[0].clientX;
                 clienty.textContent = e.touches[0].clientY;
+                documentx.textContent = e.touches[0].pageX;
+                documenty.textContent = e.touches[0].pageY;
                 console.log('touchstart');
-            }, false);
+                // e.preventDefault();
 
+            }, false);
+            var i = 0;
             wrap.addEventListener('touchmove', function(e) {
                 clientx.textContent = e.touches[0].clientX;
                 clienty.textContent = e.touches[0].clientY;
-                // 阻止滚动
-                e.preventDefault();
-                console.log('touchmove')
+                documentx.textContent = e.touches[0].pageX;
+                documenty.textContent = e.touches[0].pageY;
+                console.log('touchmove');
 
+                i += 10;
+                console.log(`translate3d(0, ${i}px, 0)`)
+                wrap.style.transform = `translate3d(0, ${i}px, 0)`;
+                // 阻止滚动
+                // e.preventDefault();
+                // e.stopPropagation();
             }, false);
 
             wrap.addEventListener('touchend', function(e) {
                 clientx.textContent = e.changedTouches[0].clientX;
                 clienty.textContent = e.changedTouches[0].clientY;
+                documentx.textContent = e.changedTouches[0].pageX;
+                documenty.textContent = e.changedTouches[0].pageY;
                 console.log('touchend')
-
             }, false);
 
             wrap.addEventListener('click', function(e) {
                 console.log('click')
-
             }, false);
 
-
-
-
+            var eventBtn = document.querySelector("#event");
             //自定义事件
             var event;
-            var eventBtn = document.querySelector("#event");
-
             eventBtn.addEventListener('myevent', function(e) {
                 console.log('myevent');
-
             }, false);
 
             event = document.createEvent('CustomEvent');
-
             event.initCustomEvent('myevent', true, false, 'hello world');
-
+            //派发事件
             eventBtn.addEventListener('click', function(e) {
-
                 eventBtn.dispatchEvent(event);
-
-
             }, false);
 
         }
     </script>
-
-
-
 </body>
 
 </html>
