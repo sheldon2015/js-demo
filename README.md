@@ -28,6 +28,8 @@
 *  day14
         1. slice()   转换具有length的数据结构为数组
         2. margin 副边距，圣杯布局和双飞翼布局
+*  day15  
+        1. handleEvent 
 
 
 

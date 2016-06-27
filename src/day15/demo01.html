@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<script>
+    // using funcion handle
+    function clickHandler() {
+        console.log('clickHandler:', this.name);
+    }
+    window.addEventListener('click', clickHandler, false);
+    // using obj handle
+    var handleObj = {
+        name: 'object',
+        handleEvent: function() {
+            console.log("handleEvent obj:", this.name);
+        }
+    }
+
+    window.addEventListener('click', handleObj, false);
+</script>
+
+<body>
+</body>
+
+</html>
