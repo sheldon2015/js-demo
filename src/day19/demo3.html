@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>自执行函数和常见库中兼容amd cmd 和直接用script脚本加载js的情况</title>
+</head>
+
+<body>
+
+    <script>
+        + function(a) {
+            alert(a)
+        }(1);
+
+
+        (function(a) {
+            alert(a)
+        }(2));
+
+        //写一个jquery插件，兼容年amd，cmd，以及不支持这两种的情况
+
+        (
+            function(factory) {
+                'use strict';
+
+                // AMD
+                if (typeof define === 'function' && define.amd) define(['jquery'], factory);
+
+                // CommonJS
+                else if (typeof exports === 'object') factory(require('jquery'));
+
+                // browser globals
+                else factory(9999);
+
+            }(
+                //将函数作为参数直接传给建荣函数
+                function(m) {
+                    alert(m)
+
+                }
+
+            )
+
+
+        )
+    </script>
+</body>
+
+</html>
