@@ -34,6 +34,7 @@
         2.  通过contentWindow可以获取iframe的window对象，反过来可以由parent(top等),由iframe获取当前的window对象；
 * day19
         1. html5中  postmessage跨文档，跨域传递消息
+        2.  兼容cmd  ，amd代码片段
 
 
 
