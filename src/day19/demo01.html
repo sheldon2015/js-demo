@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <iframe id="ifr" src="demo2.html"></iframe>
+    <div>111111111111111</div>
+    <script>
+        //         data: 消息
+        // origin: 消息来源地址
+        // source: 源 DOMWindow 对象
+        window.onload = function() {
+            var ifr = document.querySelector('#ifr');
+            ifr.contentWindow.postMessage({
+                a: 1
+            }, '*');
+        }
+        window.addEventListener('message', function(e) {
+            console.log('bar say: ' + e.data);
+        }, false);
+    </script>
+</body>
+
+</html>

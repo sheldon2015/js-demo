@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        2222222222222
+    </div>
+    <script>
+        window.addEventListener('message', function(e) {
+            console.log('foo say: ' + e.data.a);
+            e.source.postMessage('get', '*');
+        }, false)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <iframe style='display:none' id='ifr' src='demo2.html' frameborder="0"></iframe>
+    <script>
+        var ifr = document.querySelector('#ifr');
+        console.log(ifr);
+        //获取iframe的window对象
+        ifr.contentWindow.name = 'aaaaaa';
+        console.log(ifr.contentWindow.name);
+        //iframe的加载事件
+        ifr.onload = function() {
+            console.log('iframe   loaded')
+        }
+    </script>
+</body>
+
+</html>
