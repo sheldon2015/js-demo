@@ -23,23 +23,17 @@
         (
             function(factory) {
                 'use strict';
-
                 // AMD
                 if (typeof define === 'function' && define.amd) define(['jquery'], factory);
-
                 // CommonJS
                 else if (typeof exports === 'object') factory(require('jquery'));
-
                 // browser globals
-                else factory(9999);
-
+                else factory(Jquery);
             }(
                 //将函数作为参数直接传给建荣函数
                 function(m) {
                     alert(m)
-
                 }
-
             )
 
 
