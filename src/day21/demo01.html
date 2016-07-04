@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>3d</title>
+    <style>
+        * {
+            margin: 0
+        }
+        
+        .wrap {
+            width: 400px;
+            height: 400px;
+            background: red;
+            display: table;
+            margin: 100px auto;
+        }
+        
+        .target {
+            width: 400px;
+            height: 400px;
+            /*key  code*/
+            display: table-cell;
+            background: green;
+            /*key  code*/
+            vertical-align: middle;
+            position: relative;
+        }
+        
+        .content {
+            position: absolute;
+            height: 40px;
+            background: red;
+            width: 40px;
+            transition: all 5s;
+            /*设置transform-origin在z轴上的距离120px*/
+            transform-origin: 50% 50% 120px;
+            left: 100px;
+        }
+        
+        .content-other {
+            position: absolute;
+            height: 40px;
+            background: purple;
+            width: 40px;
+            left: 100px;
+        }
+        
+        .content:hover {
+            /*transform: rotate(180deg);*/
+            transform: rotateY(180deg)
+        }
+    </style>
+</head>
+
+<body>
+    <div class='wrap'>
+        <div class='target'>
+            <div class='content-other'>
+                AAAA
+            </div>
+            <div class='content'>
+                AAAA
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
