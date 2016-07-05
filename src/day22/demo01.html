@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <title>抽奖的基本逻辑</title>
+</head>
+
+<body>
+    <div id="lottery">
+        <div class="pos">
+            <div class="lottery-unit active lottery-unit-0" code="73db7072f11284facdcd7096e8f7afc1">
+                <img src="./易融恒信-10亿冲刺，极速前进_files/prize1.png">
+                <div class="prize_name">小米移动电源(5000mAh)</div>
+            </div>
+            <div class="lottery-unit  lottery-unit-1" code="73db7072f11284facdcd7096e8f7afc6">
+                <img src="./易融恒信-10亿冲刺，极速前进_files/prize2.png">
+                <div class="prize_name">20元现金券</div>
+            </div>
+            <div class="lottery-unit  lottery-unit-2" code="73db7072f11284facdcd7096e8f7afc5">
+                <img src="./易融恒信-10亿冲刺，极速前进_files/prize3.png">
+                <div class="prize_name">30元现金券</div>
+            </div>
+            <div class="lottery-unit lottery-unit-3" code="FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF">
+                <img src="./易融恒信-10亿冲刺，极速前进_files/prize4.png">
+                <div class="prize_name">继续加油!</div>
+            </div>
+            <div class="lottery-unit lottery-unit-4" code="73db7072f11284facdcd7096e8f7afc9">
+                <img src="./易融恒信-10亿冲刺，极速前进_files/prize5.png">
+                <div class="prize_name">科沃斯扫地机器人</div>
+            </div>
+            <div class="draw">
+                <div class="has">
+                    <div class="show"><img src="./易融恒信-10亿冲刺，极速前进_files/word.png"></div>
+                    <div class="count">每天免费抽奖<b style="color:#FFF071">3</b>次</div>
+                    <div class="count" style="display:none">今日抽奖还剩<i>0</i>次</div>
+                </div>
+
+            </div>
+            <div class="lottery-unit lottery-unit-5" code="73db7072f11284facdcd7096e8f7afc7">
+                <img src="./易融恒信-10亿冲刺，极速前进_files/prize6.png">
+                <div class="prize_name">50可用积分</div>
+            </div>
+            <div class="lottery-unit lottery-unit-6" code="73db7072f11284facdcd7096e8f7afc2">
+                <img src="./易融恒信-10亿冲刺，极速前进_files/prize8.png">
+                <div class="prize_name">88元现金</div>
+            </div>
+            <div class="lottery-unit lottery-unit-7" code="73db7072f11284facdcd7096e8f7afc3">
+                <img src="./易融恒信-10亿冲刺，极速前进_files/prize7.png">
+                <div class="prize_name">100元现金券</div>
+            </div>
+            <div class="lottery-unit lottery-unit-8" code="FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF">
+                <img src="./易融恒信-10亿冲刺，极速前进_files/prize4.png">
+                <div class="prize_name">继续加油!</div>
+            </div>
+            <div class="lottery-unit lottery-unit-9" code="73db7072f11284facdcd7096e8f7afc8">
+                <img src="./易融恒信-10亿冲刺，极速前进_files/prize10.png">
+                <div class="prize_name">10可用积分</div>
+            </div>
+            <div class="lottery-unit lottery-unit-10" code="73db7072f11284facdcd7096e8f7afc4">
+                <img src="./易融恒信-10亿冲刺，极速前进_files/prize11.png">
+                <div class="prize_name">50元现金券</div>
+            </div>
+            <div class="lottery-unit lottery-unit-11" code="73db7072f11284facdcd7096e8f7af99">
+                <img src="./易融恒信-10亿冲刺，极速前进_files/prize12.png">
+                <div class="prize_name">12寸MacBook</div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var prizes = {};
+        $(".lottery-unit").each(function(index) {
+            var that = $(this);
+            that.addClass("lottery-unit-" + index)
+            var pcode = that.attr("code");
+            if (pcode) {
+                prizes[pcode] = index;
+            }
+        });
+        //抽奖
+        var lottery = {
+            index: -1, //当前转动到哪个位置，起点位置
+            count: 0, //总共有多少个位置
+            timer: 0, //setTimeout的ID，用clearTimeout清除
+            speed: 20, //初始转动速度
+            times: 0, //转动次数
+            cycle: 50, //转动基本次数：即至少需要转动多少次再进入抽奖环节
+            prize: -1, //中奖位置
+            position: -1,
+            init: function(id) { //获取选择的数量
+                if ($("#" + id).find(".lottery-unit").length > 0) { //count值
+                    $lottery = $("#" + id);
+                    $units = $lottery.find(".lottery-unit");
+                    this.obj = $lottery;
+                    this.count = $units.length;
+                    $lottery.find(".lottery-unit-" + this.index).addClass("active");
+                };
+            },
+            roll: function() { //当前移动位置加1[index+1]
+                var index = this.index;
+                var count = this.count;
+                var lottery = this.obj;
+                $(lottery).find(".lottery-unit-" + index).removeClass("active");
+                index += 1;
+                if (index > count - 1) {
+                    index = 0;
+                };
+                $(lottery).find(".lottery-unit-" + index).addClass("active");
+                this.index = index;
+            },
+            stop: function(index) {
+                this.prize = index;
+            }
+        };
+
+        function roll() {
+            lottery.times += 1;
+            lottery.roll(); //times=1,index=0
+
+            //实际转动次数 > 转动基本次数   中奖位置=当前高亮的位置【抽奖结束】
+
+            if (lottery.times > lottery.cycle + 10 && lottery.prize == lottery.index) {
+                clearTimeout(lottery.timer);
+                lottery.prize = -1;
+                lottery.times = 0;
+
+            } else {
+
+                if (lottery.times < lottery.cycle) {
+
+                    lottery.speed -= 10;
+
+
+                } else if (lottery.times == lottery.cycle) {
+
+                    var index = Number(lottery.position); //Math.random()*(lottery.count)|0;
+                    lottery.prize = index;
+
+                } else {
+
+                    if (lottery.times > lottery.cycle + 10 && ((lottery.prize == 0 && lottery.index == 7) || lottery.prize == lottery.index + 1)) {
+
+                        lottery.speed += 110;
+
+                    } else {
+
+                        lottery.speed += 20;
+                    }
+                }
+                if (lottery.speed < 40) {
+                    lottery.speed = 40;
+                };
+
+                lottery.timer = setTimeout(roll, lottery.speed);
+            }
+        }
+        window.onload = function() {
+            lottery.init('lottery');
+            $(".show").click(function() {
+                function rollByPCode(pCode) {
+                    //中奖的位置索引
+                    lottery.position = prizes[pCode];
+
+                    lottery.speed = 150; //设置速度
+                    roll();
+                }
+                var pCode = 'FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF';
+                rollByPCode(pCode);
+            });
+        }
+    </script>
+
+
+</body>
+
+</html>
