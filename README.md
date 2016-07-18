@@ -67,5 +67,8 @@
 
         2. countup带缓动效果，数字减少(增加)函数
 
+* day23
+        1. 当绝对定位元素（'position' 属性为fixed和absolute）如果没有设置 'position' 属性为 'absolute'、'relative' 或者 'fixed' 的祖先元素，则可视窗口是他的包含块。
+
 
 
