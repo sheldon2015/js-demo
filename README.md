@@ -1,6 +1,8 @@
-#demo-for-practice
-##日常的小练习
-###目录
+# demo-for-practice
+
+## 日常的小练习
+
+### 目录
 
 * day08
 
@@ -64,7 +66,6 @@
         1. pc上日立插件zebra_datepicker
 
         2. countup带缓动效果，数字减少(增加)函数
-
 
 
 

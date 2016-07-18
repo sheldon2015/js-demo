@@ -9,13 +9,25 @@
 
 <body>
     <input class='datepicker' type="text" placeholder="起始时间">
+    <input id='chnageValue' type="button">
 
     <script src='./../../jquery.min.js'></script>
     <script src='./../../zebra_datepicker.js'></script>
     <script>
         $(function() {
 
-            $('.datepicker').Zebra_DatePicker({
+            //赋值操作不会触发change事件
+
+            $('.datepicker').on('change', () => {
+                alert(1111);
+            }).Zebra_DatePicker({
+
+                //提供了callback函数,当值改变时可以
+
+                onSelect: function(views, elements) {
+                    console.log(views);
+                    console.log(elements);
+                },
                 days: ['日', '一', '二', '三', '四', '五', '六'],
                 default_position: 'below',
                 offset: [-150, 50],
@@ -23,6 +35,11 @@
                 show_icon: false,
                 show_select_today: false,
                 months: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']
+            });
+            var i = 1;
+            $('#chnageValue').on('click', () => {
+                $('.datepicker').val(++i)
+
             });
 
         })
