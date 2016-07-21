@@ -13,10 +13,18 @@
             this.location = location;
         }
 
+
+        Super.prototype.say = function() {
+            console.log(this)
+        }
+
         function Child(age, location) {
             Super.call(this, location);
             this.age = age;
         }
+
+
+
 
         var child = new Child(11, 'ywz')
         console.log(child)
@@ -27,6 +35,9 @@
         console.log(child.__proto__.constructor == Child)
         console.log(child.__proto__.constructor == Child.prototype.constructor)
 
+
+
+        //原型链，直到尽头Object的null
         console.log(child.__proto__ == Child.prototype)
 
         console.log(Child.prototype.__proto__ == Object.prototype)
