@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function Super(location) {
+
+            this.location = location;
+        }
+
+        function Child(age, location) {
+            Super.call(this, location);
+            this.age = age;
+        }
+
+        var child = new Child(11, 'ywz')
+        console.log(child)
+
+        //实例的__proto__指向构造函数的prototype对象
+
+        console.log(Child.prototype)
+        console.log(child.__proto__.constructor == Child)
+        console.log(child.__proto__.constructor == Child.prototype.constructor)
+
+        console.log(child.__proto__ == Child.prototype)
+
+        console.log(Child.prototype.__proto__ == Object.prototype)
+
+        console.log(Object.prototype.__proto__)
+    </script>
+
+</body>
+
+</html>
