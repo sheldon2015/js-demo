@@ -68,7 +68,19 @@
         2. countup带缓动效果，数字减少(增加)函数
 
 * day23
+
         1. 当绝对定位元素（'position' 属性为fixed和absolute）如果没有设置 'position' 属性为 'absolute'、'relative' 或者 'fixed' 的祖先元素，则可视窗口是他的包含块。
+
+        2. textarea标签之间如果有文本也会显示，有点类似placeholder会显示在浏览器中;
+        (
+                遇到的问题:
+                标签之间有空格，然后设置了placeholder，placeholder死都不显示，坑爹
+        )
+
+        3.百度地图api
+
+
+
 
 
 

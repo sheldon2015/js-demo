@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>jquery的extend函数 浅拷贝 深拷贝 </title>
+    <script src='./../../../jquery.min.js'></script>
+</head>
+
+<body>
+
+
+    <script>
+        //第一种情况
+        /**
+         * $.extend(des)会返回$(也就是Jquery对象)
+         */
+        var dest = {
+                a: 'a',
+                age: 11,
+                info: [1, 2, {
+                    age: 1
+                }]
+            },
+            a;
+
+        a = $.extend(dest)
+        console.log('a :' + a);
+    </script>
+
+    <script>
+        //第二种情况  浅拷贝,同名属性会被后面的替换，否则添加到返回的对象上
+        /**
+         * $.extend(des,arg2) 返回页个对象合并了des和arg2
+         */
+        var dest = {
+                a: 'a',
+                age: 11,
+                info: [1, 2, {
+                    age: 1
+                }]
+            },
+            b;
+
+
+        var arg2 = {
+            b: 'b',
+            age: 19,
+            info: [1, 2, {
+                name: 'ywz'
+            }]
+        };
+
+        b = $.extend(dest, arg2)
+        console.log('b :' + b);
+    </script>
+
+    <script>
+        //第三种情况  深拷贝,同名属性会被后面的替换，否则递归添加到返回的对象上
+        /**
+         * $.extend(true,des,arg2) 返回页个对象合并了des和arg2
+         */
+        var dest = {
+                a: 'a',
+                age: 11,
+                info: [1, 2, {
+                    age: 1
+
+                }]
+            },
+            c;
+        var arg2 = {
+            b: 'b',
+            age: 19,
+            info: [1, 2, {
+
+                name: 'ywz'
+            }]
+        };
+        c = $.extend(true, dest, arg2);//当false时，与第2种情况相同
+        console.log('c :' + c);
+    </script>
+</body>
+
+</html>
