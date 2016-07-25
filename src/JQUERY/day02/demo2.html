@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>js 拷贝</title>
+</head>
+
+<body>
+
+    <script>
+        var s1 = [
+            1,
+            'name', {
+                age: 11,
+                location: 'wwwwwwww'
+            }
+        ];
+
+
+        for (var i in s1) {
+            console.log(s1[i]);
+        }
+        //-----------------------------------
+        var s2 = {
+            age: 11,
+            location: 'wwwwwwww'
+        }
+
+
+        for (var i in s2) {
+            console.log(i);
+            console.log(s2[i]);
+        }
+    </script>
+
+
+    <script>
+        /**
+         *  p 目标对象
+         *  c 返回的对象
+         */
+        function deepCopy(p, c) {　　　　
+            var c = c || {};　　　　
+            for (var i in p) {　　　　　　
+                if (typeof p[i] === 'object') {　　
+
+                    　　　　　　
+                    // c[i] = p[i].constructor === Array ? [] : {};　　
+                    c[i] = Array.isArray(p[i]) ? [] : {};　　
+
+                    　　　　　　
+                    deepCopy(p[i], c[i]);　　
+
+                    　　　　
+                } else {　
+                    //复制基本数据类型　　　　　　　　
+                    c[i] = p[i];　　　　　　
+                }　　　　
+            }　　　　
+            return c;　　
+        }
+
+
+        var s = {
+            age: 1,
+            name: 'ywz',
+            info: [
+                1,
+                2, {
+                    location: 'aa'
+
+                }
+            ]
+        };
+
+        var s1;
+        s1 = deepCopy(s);
+        console.log('s  ', s);
+        console.log('s1 ', s1);
+
+
+        s.info[2].location = 'bbbbbbbb';
+        // console.log('s  ', s);
+        // console.log('s1 ', s1);
+    </script>
+
+
+
+</body>
+
+</html>

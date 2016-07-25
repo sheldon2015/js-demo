@@ -3,11 +3,12 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>jquery的extend函数 浅拷贝 深拷贝 </title>
+    <title>jquery的extend函数拷贝 (按键值拷贝)</title>
     <script src='./../../../jquery.min.js'></script>
 </head>
 
 <body>
+
 
 
     <script>
@@ -31,7 +32,7 @@
     <script>
         //第二种情况  浅拷贝,同名属性会被后面的替换，否则添加到返回的对象上
         /**
-         * $.extend(des,arg2) 返回页个对象合并了des和arg2
+         * $.extend(des,arg2) 返回页个对象合并了des和arg2,返回最终的des (只复制顶层的非 object 元素)
          */
         var dest = {
                 a: 'a',
@@ -51,14 +52,15 @@
             }]
         };
 
-        b = $.extend(dest, arg2)
+        b = $.extend(dest, arg2);
+
         console.log('b :' + b);
     </script>
 
     <script>
         //第三种情况  深拷贝,同名属性会被后面的替换，否则递归添加到返回的对象上
         /**
-         * $.extend(true,des,arg2) 返回页个对象合并了des和arg2
+         * $.extend(true,des,arg2) 返回页个对象合并了des和arg2，返回最终的des（一层一层往下复制直到最底层） 
          */
         var dest = {
                 a: 'a',

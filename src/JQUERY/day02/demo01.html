@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>js 拷贝</title>
+</head>
+
+<body>
+
+    <script>
+        + function() {
+            // 数组slice方法
+            //直接复制引用
+
+            var s1 = [
+                1,
+                'name', {
+                    age: 11,
+                    location: 'wwwwwwww'
+                }
+            ];
+
+            var s2 = s1.slice(0); //s2=s1还是有区别，创建了一个新的对象s2;
+
+            s2[0] = 999;
+            s2[2].age = 999;
+
+            console.log('s2', s2);
+            console.log('s1', s1);
+
+
+        }()
+    </script>
+
+    <script>
+        + function() {
+            var s1 = [
+                1,
+                'name', {
+                    age: 11,
+                    location: 'wwwwwwww'
+                }
+            ];
+
+
+            var s2 = [];
+
+            //  实现过程
+            s2[0] = s1[0];
+            s2[1] = s1[1];
+            s2[2] = s1[2];
+            //
+
+            s2[0] = 999;
+            s2[2].age = 999;
+
+            console.log('s2', s2);
+            console.log('s1', s1);
+        }()
+    </script>
+
+    <script>
+        + function() {
+
+            var s1 = [
+                1,
+                'name', {
+                    age: 11,
+                    location: 'wwwwwwww'
+                }
+            ];
+
+            var s2 = [];
+            var temp = {}
+
+            // 自己实现过程
+            s2[0] = s1[0];
+            s2[1] = s1[1];
+
+            temp.age = s1[2].age;
+            temp.location = s1[2].location;
+            s2[2] = temp;
+            temp = null;
+            //
+
+
+            s2[0] = 999;
+            s2[2].age = 999;
+
+            console.log('s2', s2);
+            console.log('s1', s1);
+
+        }()
+    </script>
+
+
+</body>
+
+</html>
