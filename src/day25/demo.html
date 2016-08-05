@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>dom滑轮事件</title>
+    <style>
+        html {
+            height: 100%;
+            margin: 0;
+            background: red;
+        }
+        
+        body {
+            height: 500%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+
+
+    </div>
+    <script src='./../../jquery.min.js'></script>
+    <script>
+        var m = 1; //(不能瞎命名变量, 命名event会有问题)
+
+        $('body').on('mousewheel DOMMouseScroll', function(e) {
+
+            //火狐浏览器 e.originalEvent.detail=正负3 （火狐方向与之相反）
+            //其他浏览器 e.originalEvent.wheelDelta=正负120  (向下120，向上-120)
+
+
+        })
+    </script>
+</body>
+
+</html>

@@ -82,6 +82,34 @@
         c = $.extend(true, dest, arg2); //当false时，与第2种情况相同
         console.log('c :' + c);
     </script>
+
+
+    <script>
+        var myPlug = {};
+        (
+
+            function($) {
+
+                myPlug.ScrollBar = function(op) {
+
+
+                    this._init(op)
+
+                }
+                myPlug.ScrollBar.prototype._init = function(op) {
+
+                    console.log(op);
+
+                }
+
+            }
+
+        )($)
+
+
+        var s = new myPlug.ScrollBar('qqqqqqqq');
+        console.log('s', s)
+    </script>
 </body>
 
 </html>
