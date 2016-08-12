@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>锚点</title>
+    <!--
+        a元素用name和id都可以
+        其他元素用id。
+    -->
+    <style>
+        .div {
+            height: 80vh;
+            background: green;
+            margin-bottom: 10px;
+        }
+        
+        .a {
+            height: 80vh;
+            background: red;
+            margin-bottom: 10px;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class='a-wrap'>
+        <a href="#a11">a11</a>
+        <a href="#a22">a22</a>
+        <a href="#a33">a33</a>
+        <a href="#a44">a44</a>
+        <a href="#a55">a55</a>
+        <a href="#a66">a66</a>
+    </div>
+    <div id='a11' class='div a11'>
+        a11
+    </div>
+
+    <div id='a22' class='div a22'>
+        a22
+    </div>
+
+    <div id='a33' class='div a33'>
+        a33
+    </div>
+    <a name='a44' class='a a44'>
+       'a44
+    </a>
+
+    <a name='a55' class='a a55'>
+       a55
+    </a>
+
+    <a name='a66' class='a a66'>
+        a66
+    </a>
+
+</body>
+
+</html>
