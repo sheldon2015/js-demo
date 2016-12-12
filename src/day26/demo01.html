@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>sticky 布局</title>
+    <style>
+        * {
+            margin: 0;
+        }
+        
+        html,
+        body {
+            height: 100%;
+        }
+        
+        .test {
+            height: 200%;
+            background: red;
+        }
+        
+        .dest {
+            height: 80px;
+            position: -webkit-sticky;
+            position: sticky;
+       
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="dest">
+        sticky 布局
+    </div>
+    <div class="test">
+        xxxxxxx
+    </div>
+
+</body>
+
+</html>
