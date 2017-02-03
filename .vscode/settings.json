@@ -1,3 +1,4 @@
 {
-  "explorerExcludedFiles.show": true
+"explorerExcludedFiles.show": true,
+"vsicons.presets.angular": false
 }

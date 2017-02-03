@@ -127,7 +127,7 @@ var fn = function () {
 
     if (t < d) {
 
-        t++;
+      
 
         globalId = requestAnimationFrame(fn);
     }
